@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homemade Margherita Pizza - Savory</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            margin-top: 100px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            padding: 15px 0;
+            top: 0;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: #e67e22;
+        }
+        
+        .nav-container {
+            width: 100%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        .nav-links a:hover {
+            color: #e67e22;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e67e22;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn:hover {
+            background-color: #d35400;
+        }
+        
+        /* Recipe Detail Styles - Two Column Layout */
+        .recipe-detail {
+            display: flex;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 40px 0;
+        }
+        
+        .recipe-image-column {
+           flex: 1;
+            padding: 20px;
+            display: flex;
+            margin: 80px;
+            align-items: unset;
+            justify-content: center;
+        }
+        
+        .recipe-content-column {
+            flex: 1;
+            padding: 40px;
+        }
+        
+        .recipe-hero-img {
+            width: 100%;
+            max-height: 600px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        
+        .recipe-title {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .recipe-description {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .recipe-meta {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .rating {
+            color: #f1c40f;
+            font-size: 20px;
+        }
+        
+        .recipe-ingredients, .recipe-instructions {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #e67e22;
+        }
+        
+        .ingredients-list, .instructions-list {
+            list-style-type: none;
+        }
+        
+        .ingredients-list li, .instructions-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+        }
+         /* Responsive adjustments */
+        @media (max-width: 768px) {
+    .recipe-detail {
+        flex-direction: column;
+    }
+    
+    .recipe-image-column {
+        padding: 0;  /* Remove padding to maximize space */
+        margin: 0;    /* Remove margin */
+    }
+    
+    .recipe-content-column {
+        padding: 20px;
+    }
+    
+    .recipe-hero-img {
+        width: 100%;
+        max-height: 360px; /* Set a reasonable max height for mobile */
+        border-radius: 0;   /* Remove border radius for full-width images */
+        object-fit: center; /* Ensure image covers the space without distortion */
+    }
+    
+    .recipe-title {
+        font-size: 28px; /* Slightly smaller title for mobile */
+    }
+    
+    .recipe-meta {
+        gap: 15px; /* Reduce gap between meta items */
+    }
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://img.icons8.com/color/48/000000/meal.png" alt="Savory Logo" class="logo-img">
+                    <div class="logo-text">Savory</div>
+                </div>
+                <div class="nav-container">
+                    <ul class="nav-links">
+                        <li><a href="/indexpage/">Home</a></li>
+                        <li><a href="/recipe2page/">Recipes</a></li>
+                        <li><a href="/contactpage/">Contact</a></li>
+                        <li><button class="btn" id="getStartedBtn">Get Started</button></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Recipe Detail Section with Two Columns -->
+    <div class="container">
+        <div class="recipe-detail">
+            <!-- Left Column - Image Only -->
+            <div class="recipe-image-column">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                     alt="Homemade Margherita Pizza" 
+                     class="recipe-hero-img">
+            </div>
+            
+            <!-- Right Column - All Other Content -->
+            <div class="recipe-content-column">
+                <h1 class="recipe-title">Homemade Margherita Pizza</h1>
+                <p class="recipe-description">Classic Neapolitan-style pizza with a thin, crispy crust, fresh tomato sauce, creamy mozzarella, and fragrant basil. Simple ingredients let the quality shine in this Italian favorite.</p>
+                
+                <div class="recipe-meta">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <span> (4.2)</span>
+                    </div>
+                    <div class="prep-time">
+                        <i class="far fa-clock"></i> 1 hour (includes dough rising)
+                    </div>
+                    <div class="servings">
+                        <i class="fas fa-utensils"></i> 2 pizzas (8 slices each)
+                    </div>
+                </div>
+                
+                <div class="recipe-ingredients">
+                    <h2 class="section-title">Ingredients</h2>
+                    <h3>For the Dough:</h3>
+                    <ul class="ingredients-list">
+                        <li>3 ½ cups (440g) bread flour</li>
+                        <li>1 tsp salt</li>
+                        <li>1 tsp sugar</li>
+                        <li>1 packet (2 ¼ tsp) active dry yeast</li>
+                        <li>1 ¼ cups (300ml) warm water (110°F/45°C)</li>
+                        <li>2 tbsp olive oil</li>
+                    </ul>
+                    
+                    <h3>For the Toppings:</h3>
+                    <ul class="ingredients-list">
+                        <li>½ cup San Marzano tomato sauce</li>
+                        <li>8 oz fresh mozzarella, sliced</li>
+                        <li>½ cup fresh basil leaves</li>
+                        <li>2 tbsp grated Parmesan cheese</li>
+                        <li>1 tbsp olive oil</li>
+                        <li>Salt to taste</li>
+                    </ul>
+                </div>
+                
+                <div class="recipe-instructions">
+                    <h2 class="section-title">Instructions</h2>
+                    <ol class="instructions-list">
+                        <li><strong>Make the dough:</strong> Mix flour, salt, and sugar in a bowl. Dissolve yeast in warm water and let sit for 5 minutes until foamy. Add yeast mixture and olive oil to flour, kneading for 10 minutes until smooth and elastic.</li>
+                        <li><strong>Let rise:</strong> Place dough in oiled bowl, cover with damp cloth, and let rise in warm place for 1 hour or until doubled in size.</li>
+                        <li><strong>Preheat:</strong> Place pizza stone or inverted baking sheet in oven and preheat to 475°F (245°C) for at least 30 minutes.</li>
+                        <li><strong>Shape dough:</strong> Punch down dough and divide in half. On floured surface, roll each half into 12-inch circles.</li>
+                        <li><strong>Assemble:</strong> Spread thin layer of tomato sauce over dough, leaving ½-inch border. Arrange mozzarella slices evenly.</li>
+                        <li><strong>Bake:</strong> Transfer pizza to preheated stone/sheet. Bake for 10-12 minutes until crust is golden and cheese bubbles.</li>
+                        <li><strong>Finish:</strong> Remove from oven, immediately top with fresh basil, Parmesan, a drizzle of olive oil, and pinch of salt.</li>
+                        <li><strong>Serve:</strong> Slice and enjoy while hot!</li>
+                    </ol>
+                </div>
+                
+                <a href="/recipe2page/" class="btn back-btn"><i class="fas fa-arrow-left"></i> Back to Recipes</a>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

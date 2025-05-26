@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluffy Blueberry Pancakes - Savory</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+      margin-top: 100px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+      padding: 15px 0;
+      top: 0;
+    }
+
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 28px;
+      font-weight: 700;
+      color: #e67e22;
+    }
+
+    .nav-container {
+      width: 100%;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      color: #e67e22;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: #e67e22;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background-color 0.3s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn:hover {
+      background-color: #d35400;
+    }
+
+    /* Recipe Detail Styles */
+    .recipe-detail {
+      display: flex;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin: 40px 0;
+    }
+
+    .recipe-image-column {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      margin: 80px;
+      align-items: unset;
+      justify-content: center;
+    }
+
+    .recipe-content-column {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .recipe-hero-img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .recipe-title {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .recipe-description {
+      font-size: 18px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .recipe-meta {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .rating {
+      color: #f1c40f;
+      font-size: 20px;
+    }
+
+    .recipe-ingredients,
+    .recipe-instructions {
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #e67e22;
+    }
+
+    .ingredients-list,
+    .instructions-list {
+      list-style-type: none;
+    }
+
+    .ingredients-list li,
+    .instructions-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    /* Recipe Form Styles */
+    .recipe-form-section {
+      background-color: #fff;
+      padding: 40px;
+      margin: 40px 0;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .recipe-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .recipe-form input,
+    .recipe-form textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    .recipe-form textarea {
+      min-height: 100px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .recipe-detail {
+        flex-direction: column;
+      }
+
+      .recipe-image-column {
+        padding: 0;
+        margin: 0;
+      }
+
+      .recipe-content-column {
+        padding: 20px;
+      }
+
+      .recipe-hero-img {
+        width: 100%;
+        max-height: 360px;
+        border-radius: 0;
+        object-fit: cover;
+      }
+
+      .recipe-title {
+        font-size: 28px;
+      }
+
+      .recipe-meta {
+        gap: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body> <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo-container"> <img src="https://img.icons8.com/color/48/000000/meal.png" alt="Savory Logo"
+            class="logo-img" />
+          <div class="logo-text">Savory</div>
+        </div>
+        <div class="nav-container">
+          <ul class="nav-links">
+            <li><a href="/indexpage/">Home</a></li>
+            <li><a href="/featurespage/">Features</a></li>
+            <li><a href="/recipe2page/">Recipes</a></li>
+            <li><a href="/aboutpage/">About</a></li>
+            <li><a href="/contactpage/">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Recipe Form Section -->
+  <section class="container" id="submit-recipe">
+    <div class="recipe-form-section">
+      <h2 class="recipe-title">Request Your Recipe</h2>
+      <form id="recipeForm" class="recipe-form" method="POST">
+        {% csrf_token  %}
+        <input type="text" name="recipeName" placeholder="Recipe Name" required />
+        <textarea name="description" placeholder="Short Description" required></textarea>
+        <textarea name="ingredients" placeholder="Ingredients (one per line)" required></textarea>
+        <textarea name="instructions" placeholder="Instructions (step-by-step)" required></textarea>
+        <input type="url" name="imageUrl" placeholder="Image URL (optional)" />
+        <button type="submit" class="btn">Request Recipe</button>
+      </form>
+    </div>
+  </section>
+ 
+</body>
+
+</html>
