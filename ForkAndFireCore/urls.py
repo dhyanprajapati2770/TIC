@@ -15,26 +15,37 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from recipes.views import home,indexpage,recipe2page,featurespage,aboutpage,recipeviewpage,contactpage
+from recipes.views import home, indexpage, recipe2page, featurespage, aboutpage, recipeviewpage, contactpage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/',home),
-    path('',indexpage),
-    path('recipe2page/',recipe2page),
-    path('indexpage/',indexpage),
-    path('featurespage/',featurespage),
-    path('aboutpage/',aboutpage),
-    path('recipeviewpage/<id>',recipeviewpage),
-    path('contactpage/',contactpage),
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+    # Healthcare API endpoints
+    path('api/auth/', include('healthcare_auth.urls')),
+    path('api/symptoms/', include('symptom_checker.urls')),
+    path('api/disease/', include('disease_predictor.urls')),
+    path('api/medicine/', include('medicine_recommendation.urls')),
+    path('api/pharmacy/', include('pharmacy.urls')),
+    path('api/chat/', include('doctor_chat.urls')),
+    path('api/dashboard/', include('user_dashboard.urls')),
+    
+    # Original recipe app URLs (keeping for backward compatibility)
+    path('recipes/home/', home),
+    path('recipes/', indexpage),
+    path('recipes/recipe2page/', recipe2page),
+    path('recipes/indexpage/', indexpage),
+    path('recipes/featurespage/', featurespage),
+    path('recipes/aboutpage/', aboutpage),
+    path('recipes/recipeviewpage/<id>', recipeviewpage),
+    path('recipes/contactpage/', contactpage),
+    
+    # Default route redirects to React app
+    path('', indexpage),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-
-admin.site.site_title = "Admin site"
-admin.site.site_header = "Recipe Dashboard"
-
-admin.site.index_title = "The Independent Chef: Healthy Meals Made Easy for Students"
+admin.site.site_title = "HealthCare+ Admin"
+admin.site.site_header = "HealthCare+ Administration"
+admin.site.index_title = "Comprehensive Healthcare Management Platform"
